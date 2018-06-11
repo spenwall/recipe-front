@@ -1,0 +1,14 @@
+.recipeContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.recipe {
+    max-width: 500px;
+}
+
+.recipeImage {
+    max-width: 200px;
+    max-height: 200px;
+}

@@ -12,9 +12,13 @@ class App extends Component {
   }
 
   search = (event) => {
+    event.preventDefault();
     Food2Fork.search(this.state.searchValue)
     .then(response => {
-      console.log('hello');
+      this.setState({searchResults: response.data.recipes});
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
 
@@ -26,11 +30,13 @@ class App extends Component {
     return (
       <div className="App">
         <div>
+            <form onSubmit={this.search}>
             <input type="text" value={this.state.searchValue} 
               onChange={this.searchInput} />
-            <button onClick={this.search} >Search</button>
+            <button type="submit">Search</button>
+            </form>
         </div>
-        <Results searchTerms={this.state.searchResults} />
+        <Results searchResults={this.state.searchResults} />
       </div>
     );
   }

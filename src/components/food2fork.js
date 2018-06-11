@@ -7,9 +7,11 @@ class Food2Fork
             key: 'e52a1b893031159baf92060df151616d',
             q: searchTerm
         }
-        return axios.get('http://food2fork.com/api/search', {
-            params: parameters
-        });
+        return axios.get(`https://cors-anywhere.herokuapp.com/food2fork.com/api/search`,{
+                        headers: {'Access-Control-Allow-Origin': '*'},
+                        params: parameters
+                    }
+                );
     }
 }
 
