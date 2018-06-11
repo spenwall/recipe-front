@@ -6,15 +6,19 @@ class Results extends Component {
   render() {
     const recipes = this.props.searchResults.map((searchResult) => 
       <div className="recipe">
-        <div key={searchResult.recipe_id}><a href={searchResult.source_url}>{searchResult.title}</a></div>
-        <img className="recipeImage" src={searchResult.image_url} />
+        <a href={searchResult.source_url}>
+          <img className="recipeImage" alt={searchResult.title} src={searchResult.image_url} />
+        </a>
       </div>
     
     );
-    console.log(recipes);
-    console.log(this.props.searchResults);
     return (
-      <div className="recipeContainer">{recipes}</div>
+      <div className="recipeContainer">
+      {this.props.isLoading ? 
+      (<div className="flex content-center">Loading</div>) 
+      : 
+      (recipes)}
+      </div>
     );
   }
 

@@ -1,14 +1,16 @@
 .recipeContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
-}
-
-.recipe {
-    max-width: 500px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: calc(100vw/6);
 }
 
 .recipeImage {
-    max-width: 200px;
-    max-height: 200px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.recipeImage:hover {
+    opacity: .8;
 }
