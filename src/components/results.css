@@ -46,25 +46,18 @@
     cursor: pointer;
 }
 
-.recipeImage:hover {
-    opacity: .8;
+.recipe-gradient:hover {
+    opacity: .5;
 }
 
 .recipe-gradient {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.recipe-gradient:after {
     width: 100%;
     height: 100%;
     position: absolute;
     content: "";
     top: 0px;
     left: 0px;
-    z-index:100;
+    z-index:10;
     display:block;
     background-image: linear-gradient(0deg,rgba(0,0,0,.7) 15%,transparent 50%);
 }

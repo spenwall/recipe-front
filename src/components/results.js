@@ -5,13 +5,13 @@ class Results extends Component {
 
   render() {
     const recipes = this.props.searchResults.map((searchResult) => 
-      <div className="recipe" key={searchResult.recipe_id}>
-        <div className="recipe-gradient">
-          <a href={searchResult.source_url}>
+      <div className="recipe relative" key={searchResult.recipe_id}>
+          <a className="no-underline" href={searchResult.source_url}>
             <img className="recipeImage" alt={searchResult.title} src={searchResult.image_url} />
-            <div>{searchResult.title}</div>
+            <div className="recipe-gradient">
+            </div>
           </a>
-        </div>
+          <div className="recipe-title z-20 text-white ml-4 absolute pin-b pin-l text-left h-30">{searchResult.title}</div>
       </div>
     
     );
