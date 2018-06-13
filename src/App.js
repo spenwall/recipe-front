@@ -3,6 +3,8 @@ import './App.css';
 import Results from './components/results.js';
 import Food2Fork from './components/food2fork';
 import './css/tailwind.css';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 
 class App extends Component {
   constructor(props) {
@@ -45,11 +47,14 @@ class App extends Component {
       <div className="App">
         <div className="flex ml-2">
             <form onSubmit={this.submitSearch}>
-            <input type="text" className="p-4 bg-grey-light" 
-              value={this.state.searchValue} 
-              onChange={this.searchInput}
-
-            />
+            <div className="bg-grey-light pl-4">
+              <FontAwesomeIcon icon={faSearch} />
+              <input type="text" className="p-4 bg-grey-light" 
+                value={this.state.searchValue} 
+                onChange={this.searchInput}
+                placeholder="search recipes"
+              />
+            </div>
             </form>
         </div>
         <Results isLoading={this.state.isLoading} searchResults={this.state.searchResults} />

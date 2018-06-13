@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "0.0.20",
     "axios": "^0.18.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -10,7 +13,7 @@
     "tailwindcss": "^0.5.3"
   },
   "scripts": {
-    "tailwind:css":"tailwind build src/css/tailwind.src.css -c  tailwind.js -o src/css/tailwind.css",
+    "tailwind:css": "tailwind build src/css/tailwind.src.css -c  tailwind.js -o src/css/tailwind.css",
     "start": "npm run tailwind:css && react-scripts start",
     "build": "npm run tailwind:css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
