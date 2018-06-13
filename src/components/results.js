@@ -5,10 +5,13 @@ class Results extends Component {
 
   render() {
     const recipes = this.props.searchResults.map((searchResult) => 
-      <div className="recipe">
-        <a href={searchResult.source_url}>
-          <img className="recipeImage" alt={searchResult.title} src={searchResult.image_url} />
-        </a>
+      <div className="recipe" key={searchResult.recipe_id}>
+        <div className="recipe-gradient">
+          <a href={searchResult.source_url}>
+            <img className="recipeImage" alt={searchResult.title} src={searchResult.image_url} />
+            <div>{searchResult.title}</div>
+          </a>
+        </div>
       </div>
     
     );
