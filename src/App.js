@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {searchValue: '', 
                   searchResults: [],
-                  isLoading: false
+                  isLoading: true
                 };
   }
 
@@ -45,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="flex ml-2">
+        <div className="flex m-2">
             <form onSubmit={this.submitSearch}>
             <div className="bg-grey-light pl-4">
               <FontAwesomeIcon icon={faSearch} />
