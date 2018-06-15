@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Results from './components/results.js';
 import Food2Fork from './components/food2fork';
-import './css/tailwind.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 
@@ -49,7 +48,7 @@ class App extends Component {
             <form onSubmit={this.submitSearch}>
             <div className="bg-grey-light pl-4">
               <FontAwesomeIcon icon={faSearch} />
-              <input type="text" className="p-4 bg-grey-light search" 
+              <input type="text" className="p-6 bg-grey-light search" 
                 value={this.state.searchValue} 
                 onChange={this.searchInput}
                 placeholder="search recipes"
