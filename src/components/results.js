@@ -11,10 +11,8 @@ class Results extends Component {
             <div className="recipe-gradient">
             </div>
           </a>
-          <div className="aboslute pin-b pin-1 text-left h-30 z-20">
-            <div className="recipe-title text-white ml-4 mb-2">{searchResult.title}</div>
-            <div className="publisher m-2 text-white">{searchResult.publisher}</div>
-          </div>
+          <div className="recipe-title z-20 text-white ml-4 mb-4 absolute pin-b pin-l text-left h-30">{searchResult.title}</div>
+          <div className="z-20 text-grey-darker shadow-md text-xs absolute pin-t pin-r bg-teal-lighter pt-1 pb-1 pr-3 pl-3 mt-2">{searchResult.publisher}</div>
       </div>
     );
 
