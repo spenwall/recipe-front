@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import './results.css';
 
 class Results extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipeClicked: false
+    }
+  }
+
+  recipeClick = (e) => {
+    this.setState({recipeClick: true});
+    alert(this.state.recipeClicked);
+  }
 
   render() {
     const recipes = this.props.searchResults.map((searchResult) => 
       <div className="recipe relative" key={searchResult.recipe_id}>
-          <a className="no-underline" href={searchResult.source_url}>
+          <a className="no-underline" onClick={this.recipeClick}>
             <img className="recipeImage" alt={searchResult.title} src={searchResult.image_url} />
             <div className="recipe-gradient">
             </div>
@@ -38,7 +49,7 @@ class Results extends Component {
     console.log(loadingStuff);
 
     return (
-      <div className="recipeContainer">
+      <div id="recipeContainer">
       {this.props.isLoading ? 
       (loadingStuff) 
       : 
