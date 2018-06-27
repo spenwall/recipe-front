@@ -1,42 +1,6 @@
 #recipeContainer {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: calc(100vw/1);
-}
-    
-@media screen and (max-width: 1300px) {
-    #recipeContainer {
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: calc(100vw/5);
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    #recipeContainer {
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: calc(100vw/4);
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #recipeContainer {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: calc(100vw/3);
-    }
-}
-
-@media screen and (max-width: 650px) {
-    #recipeContainer {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: calc(100vw/2);
-    }
-}
-
-@media screen and (max-width: 350px) {
-    #recipeContainer {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: calc(100vw/1);
-    }
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .recipeImage {
