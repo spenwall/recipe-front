@@ -63,7 +63,11 @@ class Results extends Component {
 
     return (
       <div id="recipeContainer">
+        <div id="recipes">
         {this.props.isLoading ? loadingStuff : recipes}
+        </div>
+        <div id="recipe">
+        </div>
       </div>
     );
   }
