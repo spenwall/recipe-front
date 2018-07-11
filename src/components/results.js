@@ -7,6 +7,11 @@ const myStyle = css`
     height: 350px;
   `
 
+const recipeVisible = css`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+`
+
 class Results extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +21,7 @@ class Results extends Component {
   }
 
   recipeClick = e => {
-    this.setState({ recipeClick: true });
-    alert(this.state.recipeClicked);
+    this.setState(prev => ({recipeClicked: !prev.recipeClicked}));
   };
 
   render() {
@@ -62,7 +66,7 @@ class Results extends Component {
     console.log(loadingStuff);
 
     return (
-      <div id="recipeContainer">
+      <div id="recipeContainer" className={this.state.recipeClicked ? recipeVisible : '' } >
         <div id="recipes">
         {this.props.isLoading ? loadingStuff : recipes}
         </div>
