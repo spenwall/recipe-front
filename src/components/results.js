@@ -13,6 +13,23 @@ const recipeVisible = css`
   grid-template-columns: 1fr 3fr;
 `
 
+const loadingBackground = css`
+  &:nth-of-type(1n+1) {
+    background-color: #B8C2CC;
+  }
+  &:nth-of-type(2n+2) {
+    background-color: #8795A1;
+  } 
+  &:nth-of-type(3n+3) {
+    background-color: #606F7B;
+  }
+  &:nth-of-type(4n+4) {
+    background-color: #3D4852;
+  }
+  height: 350px;
+`
+
+
 class Results extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +40,7 @@ class Results extends Component {
 
   recipeClick = e => {
     this.setState(prev => ({recipeClicked: !prev.recipeClicked}));
+
   };
 
   render() {
@@ -46,22 +64,8 @@ class Results extends Component {
     ));
 
     let loadingStuff = [];
-    let bgColor = "";
     for (let i = 1; i < 30; i++) {
-      switch (i % 4) {
-        case 0:
-          bgColor = "bg-grey";
-          break;
-        case 1:
-          bgColor = "bg-grey-dark";
-          break;
-        case 2:
-          bgColor = "bg-grey-darker";
-          break;
-        default:
-          bgColor = "bg-grey-darkest";
-      }
-      loadingStuff.push(<div className={bgColor} />);
+     loadingStuff.push(<div className={loadingBackground} />);
     }
 
     console.log(loadingStuff);
@@ -72,7 +76,7 @@ class Results extends Component {
           {this.props.isLoading ? loadingStuff : recipes}
         </div>
         <div id="recipe">
-          <Recipe recipeImage={this.selectedRecipe}></Recipe>
+          <Recipe recipe={this.selectedRecipe}></Recipe>
         </div>
       </div>
     );
