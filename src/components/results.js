@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./results.css";
 import { css } from "react-emotion";
+import Recipe from "./recipe";
 
 const myStyle = css`
     cursor: pointer; 
@@ -68,9 +69,10 @@ class Results extends Component {
     return (
       <div id="recipeContainer" className={this.state.recipeClicked ? recipeVisible : '' } >
         <div id="recipes">
-        {this.props.isLoading ? loadingStuff : recipes}
+          {this.props.isLoading ? loadingStuff : recipes}
         </div>
         <div id="recipe">
+          <Recipe recipeImage={this.selectedRecipe}></Recipe>
         </div>
       </div>
     );
