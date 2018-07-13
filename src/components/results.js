@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import "./results.css";
 import { css } from "react-emotion";
-import Recipe from "./recipe";
-
-const myStyle = css`
-    cursor: pointer; 
-    height: 350px;
-  `
+import RecipeInfo from "./RecipeInfo";
+import Recipe from "./Recipe";
 
 const recipeVisible = css`
   display: grid;
@@ -28,8 +24,6 @@ const loadingBackground = css`
   }
   height: 350px;
 `
-
-
 class Results extends Component {
   constructor(props) {
     super(props);
@@ -38,29 +32,14 @@ class Results extends Component {
     };
   }
 
-  recipeClick = e => {
-    this.setState(prev => ({recipeClicked: !prev.recipeClicked}));
-
+  recipeClick = (name) => {
+    // this.setState({recipeClicked: true});
+    console.log(name);
   };
 
   render() {
     const recipes = this.props.searchResults.map(searchResult => (
-      <div className={`recipe relative ${myStyle}`} key={searchResult.recipe_id}>
-        <a className="no-underline" onClick={this.recipeClick}>
-          <img
-            className="recipeImage"
-            alt={searchResult.title}
-            src={searchResult.image_url}
-          />
-          <div className="recipe-gradient" />
-        </a>
-        <div className="recipe-title z-20 text-white ml-4 mb-4 absolute pin-b pin-l text-left h-30">
-          {searchResult.title}
-        </div>
-        <div className="z-20 text-grey-darker shadow-md text-xs absolute pin-t pin-r bg-teal-lighter pt-1 pb-1 pr-3 pl-3 mt-2">
-          {searchResult.publisher}
-        </div>
-      </div>
+        <Recipe key={searchResult.recipe_id} searchResult={searchResult} onRecipeSelect={this.recipeClick} />
     ));
 
     let loadingStuff = [];
@@ -68,15 +47,13 @@ class Results extends Component {
      loadingStuff.push(<div className={loadingBackground} />);
     }
 
-    console.log(loadingStuff);
-
     return (
       <div id="recipeContainer" className={this.state.recipeClicked ? recipeVisible : '' } >
         <div id="recipes">
           {this.props.isLoading ? loadingStuff : recipes}
         </div>
         <div id="recipe">
-          <Recipe recipe={this.selectedRecipe}></Recipe>
+          <RecipeInfo recipe={this.selectedRecipe}></RecipeInfo>
         </div>
       </div>
     );

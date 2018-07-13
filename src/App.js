@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Results from './components/results.js';
+import Results from './components/Results.js';
 import Food2Fork from './components/food2fork';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
@@ -10,7 +10,6 @@ class App extends Component {
     super(props);
     this.state = {searchValue: '', 
                   searchResults: [],
-                  isLoading: true
                 };
   }
 
