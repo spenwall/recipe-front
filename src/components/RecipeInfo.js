@@ -3,7 +3,7 @@ import { css } from 'emotion';
 
 const mainImage = css`
     min-height: 300px;
-    width: 100%;
+    width: 300px;
     background-color: grey;
 `
 class RecipeInfo extends Component {
@@ -12,7 +12,12 @@ class RecipeInfo extends Component {
     render() {
         return (
             <div>
-                <img className={ mainImage } src={ this.props.recipeImage } />
+                <img 
+                    className={ mainImage } 
+                    src={ this.props.recipeImage }
+                    alt="Recipe Main"
+                    onClick={this.props.closeRecipe}
+                />
             </div>
         );
     }

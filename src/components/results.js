@@ -32,10 +32,14 @@ class Results extends Component {
     };
   }
 
-  recipeClick = (name) => {
-    // this.setState({recipeClicked: true});
-    console.log(name);
+  recipeClick = (recipe) => {
+    this.setState({recipeClicked: true});
+    console.log(recipe);
   };
+
+  closeRecipe = () => {
+    this.setState({recipeClicked: false});
+  }
 
   render() {
     const recipes = this.props.searchResults.map(searchResult => (
@@ -53,7 +57,7 @@ class Results extends Component {
           {this.props.isLoading ? loadingStuff : recipes}
         </div>
         <div id="recipe">
-          <RecipeInfo recipe={this.selectedRecipe}></RecipeInfo>
+          <RecipeInfo recipe={this.selectedRecipe} closeRecipe={this.closeRecipe}></RecipeInfo>
         </div>
       </div>
     );
