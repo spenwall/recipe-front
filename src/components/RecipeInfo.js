@@ -5,7 +5,7 @@ const backgroundImage = css` {
     height: 400px;
     width: 100%;
     display: block;
-    position: absolute;
+    position: relative;
     opacity: .3;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -17,6 +17,7 @@ const mainImage = css` {
     height: 300px;
     width: auto;
     position: relative;
+    right: 20%;
 }`
 const darken = css` {
     content: "";
@@ -34,7 +35,7 @@ const imgContainer = css `{
     height: 400px;   
     background-color: black;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }`
 
