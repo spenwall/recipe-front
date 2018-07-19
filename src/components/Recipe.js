@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { css } from "react-emotion";
 
-const myStyle = css`
+const recipeStyle = css`
   cursor: pointer;
   height: 350px;
 `;
@@ -11,7 +11,7 @@ class Recipe extends Component {
     return (
       <div>
         <div
-          className={`recipe relative ${myStyle}`}
+          className={`recipe relative ${recipeStyle}`}
           onClick={() => this.props.onRecipeSelect(this.props.searchResult.recipe_id)}
         >
           <a className="no-underline">

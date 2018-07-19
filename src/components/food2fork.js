@@ -13,6 +13,18 @@ class Food2Fork
                     }
                 );
     }
+
+    static recipe(recipeId) {
+        let parameters = {
+            key: 'e52a1b893031159baf92060df151616d',
+            rId: recipeId
+        }
+        return axios.get('https://cors-anywhere.herokuapp.com/food2fork.com/api/get',{
+                headers: {'Access-Control-Allow-Origin': '*'},
+                params: parameters
+            }
+        );
+    }
 }
 
 export default Food2Fork

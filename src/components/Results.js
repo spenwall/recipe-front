@@ -3,6 +3,7 @@ import "./results.css";
 import { css } from "react-emotion";
 import RecipeInfo from "./RecipeInfo";
 import Recipe from "./Recipe";
+import Food2Fork from './food2fork';
 
 const recipeVisible = css`
   display: grid;
@@ -28,13 +29,21 @@ class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipeClicked: false
+      recipeClicked: false,
+      recipeLoading: false,
+      selectedRecipe: [],
     };
   }
 
-  recipeClick = (recipe) => {
+  recipeClick = (recipeId) => {
     this.setState({recipeClicked: true});
-    console.log(recipe);
+    this.setState({recipeLoading: true});
+    window.scroll( 0, 0 );
+    Food2Fork.recipe(recipeId)
+    .then(response => {
+      this.setState({selectedRecipe: response.data.recipe});
+      this.setState({recipeLoading: false});
+    });
   };
 
   closeRecipe = () => {
@@ -57,7 +66,9 @@ class Results extends Component {
           {this.props.isLoading ? loadingStuff : recipes}
         </div>
         <div id="recipe">
-          <RecipeInfo recipe={this.selectedRecipe} closeRecipe={this.closeRecipe}></RecipeInfo>
+          <RecipeInfo recipe={this.state.selectedRecipe}
+                      loading={this.state.recipeLoading} 
+                      closeRecipe={this.closeRecipe} />
         </div>
       </div>
     );
