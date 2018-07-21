@@ -49,7 +49,8 @@ class RecipeInfo extends Component {
         const backgroundStyle = {
             backgroundImage: 'url(' + imgUrl + ')'
         }
-        return (
+
+        const recipe = 
             <div className={ imgContainer }>
                 <div 
                     style={ backgroundStyle }
@@ -61,6 +62,9 @@ class RecipeInfo extends Component {
                     src={ this.props.recipe ? this.props.recipe.image_url : '' }
                 />
             </div>
+
+        return (
+            this.props.showRecipe ? recipe : ''
         );
     }
 }
