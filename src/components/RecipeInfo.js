@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 
-const backgroundImage = css` {
-    height: 400px;
-    width: 100%;
-    display: block;
-    position: relative;
-    opacity: .3;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-x: 50%;
-    background-position-y: 50%;
-}
-`
+
 const mainImage = css` {
     height: 300px;
     width: auto;
     position: relative;
-    right: 20%;
+    z-index: 1;
+    margin-right: 5%;
 }`
+
 const darken = css` {
     content: "";
     display: block;
@@ -34,17 +25,41 @@ const darken = css` {
 const imgContainer = css `{
     height: 400px;   
     background-color: black;
+}`
+
+const imageFlex = css `{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }`
-
-
 
 class RecipeInfo extends Component {
 
     render() {
-
+        const backgroundImage = css` {
+    
+            z-index: 1; 
+            position: relative; 
+        
+            ::before {
+                content: "";
+                opacity: .3;
+                height: 400px;
+                width: 100vw;
+                position: absolute;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-position-x: 50%;
+                background-position-y: 50%;
+                background-image: url("${ this.props.recipe ? this.props.recipe.image_url : ''}");
+                z-index: -1;
+                top: 0;
+                left: 0;
+            }
+        }
+        `
         let imgUrl = 'url(' + this.props.recipe ? this.props.recipe.image_url : '' + ')';
         const backgroundStyle = {
             backgroundImage: 'url(' + imgUrl + ')'
@@ -53,14 +68,17 @@ class RecipeInfo extends Component {
         const recipe = 
             <div className={ imgContainer }>
                 <div 
-                    style={ backgroundStyle }
                     className={ backgroundImage } 
                     onClick={this.props.closeRecipe}
                 />
-                <img
-                    className={ mainImage }
-                    src={ this.props.recipe ? this.props.recipe.image_url : '' }
-                />
+                <div 
+                    className={ imageFlex }
+                >
+                    <img
+                        className={ mainImage }
+                        src={ this.props.recipe ? this.props.recipe.image_url : '' }
+                    />
+                </div>
             </div>
 
         return (
