@@ -5,11 +5,25 @@ import RecipeInfo from "./RecipeInfo";
 import Recipe from "./Recipe";
 import Food2Fork from './food2fork';
 
-const recipeVisible = css`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-`
+const recipe = css`{
+  @media (max-width: 1000px) {
+    order: 1;
+  } 
+}`
 
+const recipeVisible = css`{
+  display: grid;
+
+  @media (min-width: 1000px) {
+    grid-template-columns: 1fr 4fr;d
+  }
+}`
+
+const recipesStyle = css`{
+  @media (max-width: 1000px) {
+    order 2;
+  } 
+}`
 const loadingBackground = css`
   &:nth-of-type(1n+1) {
     background-color: #B8C2CC;
@@ -63,10 +77,10 @@ class Results extends Component {
 
     return (
       <div id="recipeContainer" className={this.state.recipeClicked ? recipeVisible : '' } >
-        <div id="recipes">
+        <div id="recipes" className={recipesStyle}>
           {this.props.isLoading ? loadingStuff : recipes}
         </div>
-        <div id="recipe">
+        <div id="recipe" className={recipe}>
           <RecipeInfo recipe={this.state.selectedRecipe}
                       loading={this.state.recipeLoading} 
                       closeRecipe={this.closeRecipe} 

@@ -10,31 +10,25 @@ const mainImage = css` {
     margin-right: 5%;
 }`
 
-const darken = css` {
-    content: "";
-    display: block;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: rgba(0,0,0,.6);
-    transition: background-color .6s ease
-}`
-
 const imgContainer = css `{
     height: 400px;   
     background-color: black;
 }`
 
 const imageFlex = css `{
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     width: 100%;
     height: 100%;
 }`
 
+const recipeTitle = css`{
+    z-index: 1;
+    color: #ffffff;
+    font-size: 1.5rem;   
+    margin: 5px;
+}`
 class RecipeInfo extends Component {
 
     render() {
@@ -60,10 +54,6 @@ class RecipeInfo extends Component {
             }
         }
         `
-        let imgUrl = 'url(' + this.props.recipe ? this.props.recipe.image_url : '' + ')';
-        const backgroundStyle = {
-            backgroundImage: 'url(' + imgUrl + ')'
-        }
 
         const recipe = 
             <div className={ imgContainer }>
@@ -71,12 +61,14 @@ class RecipeInfo extends Component {
                     className={ backgroundImage } 
                     onClick={this.props.closeRecipe}
                 />
-                <div 
-                    className={ imageFlex }
-                >
+                <div className={ imageFlex }>
+                    <div className={ recipeTitle }>
+                        {this.props.recipe.title}
+                    </div>
                     <img
                         className={ mainImage }
                         src={ this.props.recipe ? this.props.recipe.image_url : '' }
+                        alt={ this.props.recipe.title }
                     />
                 </div>
             </div>

@@ -3,11 +3,6 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.recipe-visible {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
-
 .recipeImage {
     height: 100%;
     width: 100%;
