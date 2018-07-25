@@ -45,8 +45,7 @@ class App extends Component {
       <div className="App">
         <div className="flex m-2">
             <form onSubmit={this.submitSearch}>
-            <div className="bg
--grey-light pl-4">
+            <div className="bg-grey-light pl-4">
               <FontAwesomeIcon icon={faSearch} />
               <input type="text" className="p-6 bg-grey-light search" 
                 value={this.state.searchValue} 

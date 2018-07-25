@@ -7,7 +7,6 @@ const mainImage = css` {
     width: auto;
     position: relative;
     z-index: 1;
-    margin-right: 5%;
 }`
 
 const imgContainer = css `{
@@ -21,6 +20,7 @@ const imageFlex = css `{
     align-items: center;
     width: 100%;
     height: 100%;
+    padding: 2%;
 }`
 
 const recipeTitle = css`{
@@ -29,6 +29,17 @@ const recipeTitle = css`{
     font-size: 1.5rem;   
     margin: 5px;
 }`
+
+const publisher = css`{
+    font-size: .8em;
+    color: #A0F0ED;
+}`
+
+const TitelAndPublisher = css`{
+   z-index: 0;
+}`
+
+
 class RecipeInfo extends Component {
 
     render() {
@@ -52,8 +63,8 @@ class RecipeInfo extends Component {
                 top: 0;
                 left: 0;
             }
-        }
-        `
+        }`
+        
 
         const recipe = 
             <div className={ imgContainer }>
@@ -62,8 +73,13 @@ class RecipeInfo extends Component {
                     onClick={this.props.closeRecipe}
                 />
                 <div className={ imageFlex }>
-                    <div className={ recipeTitle }>
-                        {this.props.recipe.title}
+                    <div className={TitelAndPublisher}>
+                        <div className={ recipeTitle }>
+                            {this.props.recipe.title}
+                        </div>
+                        <div className={ publisher }>
+                            {this.props.recipe.publisher}
+                        </div>
                     </div>
                     <img
                         className={ mainImage }
