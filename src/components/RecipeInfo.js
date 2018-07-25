@@ -3,7 +3,7 @@ import { css } from 'emotion';
 
 
 const mainImage = css` {
-    height: 300px;
+    max-height: 300px;
     width: auto;
     position: relative;
     z-index: 1;
@@ -33,11 +33,9 @@ const recipeTitle = css`{
 const publisher = css`{
     font-size: .8em;
     color: #A0F0ED;
+    z-index: 1;
 }`
 
-const TitelAndPublisher = css`{
-   z-index: 0;
-}`
 
 
 class RecipeInfo extends Component {
@@ -73,7 +71,7 @@ class RecipeInfo extends Component {
                     onClick={this.props.closeRecipe}
                 />
                 <div className={ imageFlex }>
-                    <div className={TitelAndPublisher}>
+                    <div>
                         <div className={ recipeTitle }>
                             {this.props.recipe.title}
                         </div>
