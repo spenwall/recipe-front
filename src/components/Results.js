@@ -72,7 +72,7 @@ class Results extends Component {
 
     let loadingStuff = [];
     for (let i = 1; i < 30; i++) {
-     loadingStuff.push(<div className={loadingBackground} />);
+     loadingStuff.push(<div key={i} className={loadingBackground} />);
     }
 
     return (

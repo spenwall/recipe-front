@@ -7,6 +7,7 @@ const mainImage = css` {
     width: auto;
     position: relative;
     z-index: 1;
+    justify-self: center;
 }`
 
 const imgContainer = css `{
@@ -14,13 +15,14 @@ const imgContainer = css `{
     background-color: black;
 }`
 
-const imageFlex = css `{
+const imageGrid = css `{
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     width: 100%;
     height: 100%;
     padding: 2%;
+    z-index: 1;
 }`
 
 const recipeTitle = css`{
@@ -36,9 +38,33 @@ const publisher = css`{
     z-index: 1;
 }`
 
+const recipeStats = css`{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   height: 50px;
+}`
+
+const socialRank = css`{
+   background-color: #6B95BD;
+   padding: 5px;
+}`
+
+const numberIngredients = css`{
+   background-color: #25588A;
+   padding: 5px;
+}`
+
+const titleAndPublisher = css`{
+   z-index: 1;
+}`
+
 
 
 class RecipeInfo extends Component {
+
+    numberOfIngredients = () => {
+        return '5';
+    }
 
     render() {
         const backgroundImage = css` {
@@ -70,8 +96,8 @@ class RecipeInfo extends Component {
                     className={ backgroundImage } 
                     onClick={this.props.closeRecipe}
                 />
-                <div className={ imageFlex }>
-                    <div>
+                <div className={ imageGrid }>
+                    <div className={ titleAndPublisher }>
                         <div className={ recipeTitle }>
                             {this.props.recipe.title}
                         </div>
@@ -84,6 +110,16 @@ class RecipeInfo extends Component {
                         src={ this.props.recipe ? this.props.recipe.image_url : '' }
                         alt={ this.props.recipe.title }
                     />
+                </div>
+                <div className={ recipeStats }>
+                    <div className={ socialRank }>
+                      <div>Social Ranking:</div> 
+                      <div>{ this.props.recipe.social_rank }</div>
+                    </div>
+                    <div className={ numberIngredients }>
+                      <div>Number of Ingredients:</div> 
+                      <div>{ this.numberOfIngredients }</div>
+                    </div>
                 </div>
             </div>
 
