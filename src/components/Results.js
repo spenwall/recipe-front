@@ -61,8 +61,7 @@ class Results extends Component {
   };
 
   closeRecipe = () => {
-    this.setState({recipeClicked: false,
-                   });
+    this.setState({recipeClicked: false});
   }
 
   render() {
@@ -84,7 +83,8 @@ class Results extends Component {
           <RecipeInfo recipe={this.state.selectedRecipe}
                       loading={this.state.recipeLoading} 
                       closeRecipe={this.closeRecipe} 
-                      showRecipe={this.state.recipeClicked}/>
+                      showRecipe={this.state.recipeClicked}
+          />
         </div>
       </div>
     );

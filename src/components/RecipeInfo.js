@@ -62,11 +62,8 @@ const titleAndPublisher = css`{
 
 class RecipeInfo extends Component {
 
-    numberOfIngredients = () => {
-        return '5';
-    }
-
     render() {
+
         const backgroundImage = css` {
     
             z-index: 1; 
@@ -114,11 +111,11 @@ class RecipeInfo extends Component {
                 <div className={ recipeStats }>
                     <div className={ socialRank }>
                       <div>Social Ranking:</div> 
-                      <div>{ this.props.recipe.social_rank }</div>
+                      <div>{ Math.round(this.props.recipe.social_rank) }</div>
                     </div>
                     <div className={ numberIngredients }>
                       <div>Number of Ingredients:</div> 
-                      <div>{ this.numberOfIngredients }</div>
+                      <div>{ this.props.recipe.ingredients ? this.props.recipe.ingredients.length : '' }</div>
                     </div>
                 </div>
             </div>
