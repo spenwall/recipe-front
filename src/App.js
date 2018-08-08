@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   search = (searchTerm) => {
-    console.log(this.state.isLoading);
+    this.setState({isLoading: true});
     Food2Fork.search(this.state.searchValue)
     .then(response => {
       this.setState({searchResults: response.data.recipes});
@@ -56,7 +56,9 @@ class App extends Component {
             </div>
             </form>
         </div>
-        <Results isLoading={this.state.isLoading} searchResults={this.state.searchResults} />
+        <Results isLoading={this.state.isLoading} 
+                 searchResults={this.state.searchResults} 
+        />
       </div>
     );
   }

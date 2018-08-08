@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
-
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faTimes from '@fortawesome/fontawesome-free-solid/faTimes'
+import Ingredients from './Ingredients'
 
 const mainImage = css` {
     max-height: 300px;
@@ -58,6 +60,17 @@ const titleAndPublisher = css`{
    z-index: 1;
 }`
 
+const close = css`{
+   color: #fff;
+   position: absolute;
+   padding: 10px;
+   cursor: pointer;
+   font-size: 1.3em;
+   z-index: 1;
+   right: 0;
+}`
+
+
 
 
 class RecipeInfo extends Component {
@@ -89,11 +102,15 @@ class RecipeInfo extends Component {
 
         const recipe = 
         <div>
+            
             <div className={ imgContainer }>
-                <div 
-                    className={ backgroundImage } 
-                    onClick={this.props.closeRecipe}
-                />
+             
+                <div className={ backgroundImage } />
+                <div className={ close }
+                    onClick={this.props.closeRecipe} 
+                >
+                    <FontAwesomeIcon icon={ faTimes } />
+                </div>
                 <div className={ imageGrid }>
                     <div className={ titleAndPublisher }>
                         <div className={ recipeTitle }>
@@ -109,18 +126,20 @@ class RecipeInfo extends Component {
                         alt={ this.props.recipe.title }
                     />
                 </div>
-                
             </div>
+
             <div className={ recipeStats }>
                 <div className={ socialRank }>
                     <div>Social Ranking:</div> 
-                    <div>{ Math.round(this.props.recipe.social_rank) }</div>
+                    <div>{ this.props.recipe.social_rank ? Math.round(this.props.recipe.social_rank) : ''}</div>
                 </div>
                 <div className={ numberIngredients }>
                     <div>Number of Ingredients:</div> 
                     <div>{ this.props.recipe.ingredients ? this.props.recipe.ingredients.length : '' }</div>
                 </div>
             </div>
+            <Ingredients ingredients={ this.props.recipe.ingredients ? this.props.recipe.ingredients : [] } />
+
         </div>
         return (
             this.props.showRecipe ? recipe : ''
