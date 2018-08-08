@@ -88,6 +88,7 @@ class RecipeInfo extends Component {
         
 
         const recipe = 
+        <div>
             <div className={ imgContainer }>
                 <div 
                     className={ backgroundImage } 
@@ -108,18 +109,19 @@ class RecipeInfo extends Component {
                         alt={ this.props.recipe.title }
                     />
                 </div>
-                <div className={ recipeStats }>
-                    <div className={ socialRank }>
-                      <div>Social Ranking:</div> 
-                      <div>{ Math.round(this.props.recipe.social_rank) }</div>
-                    </div>
-                    <div className={ numberIngredients }>
-                      <div>Number of Ingredients:</div> 
-                      <div>{ this.props.recipe.ingredients ? this.props.recipe.ingredients.length : '' }</div>
-                    </div>
+                
+            </div>
+            <div className={ recipeStats }>
+                <div className={ socialRank }>
+                    <div>Social Ranking:</div> 
+                    <div>{ Math.round(this.props.recipe.social_rank) }</div>
+                </div>
+                <div className={ numberIngredients }>
+                    <div>Number of Ingredients:</div> 
+                    <div>{ this.props.recipe.ingredients ? this.props.recipe.ingredients.length : '' }</div>
                 </div>
             </div>
-
+        </div>
         return (
             this.props.showRecipe ? recipe : ''
         );
